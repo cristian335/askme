@@ -2,8 +2,11 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
-const port = process.env.PORT || 3000;
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
+const port = process.env.PORT || 3000;
 
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
@@ -12,7 +15,6 @@ app.use(express.static(__dirname + '/public'));
 app.use((req,res,next)=>{
     var now = new Date().toString();
     var log = `${now}: ${req.method} ${req.url}`;
-    console.log(log);
     fs.appendFile('server.log', log +'\n', (err) => {
         if (err) {
             console.log('Unable to appen server.log');
@@ -91,6 +93,32 @@ app.get('/maintanance', (req,res)=>{
     });
 });
 
-app.listen(port, () => {
+app.get('/chat', (req,res)=>{
+    res.render('chat.hbs', {
+        pageTitle: 'About Page'
+
+    });
+});
+
+io.on('connection', function (socket) {
+    console.log('New user connected');
+
+    socket.emit('newMessage', {
+        from: 'John',
+        text:'See you then'
+    });
+
+    socket.on('createMessage', (message) => {
+        console.log('createMessage', message);
+    });
+
+    socket.on('disconnect', () => {
+        console.log('User disconnected from server');
+    });
+});
+  
+
+
+server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
