@@ -84,6 +84,12 @@ app.get('/registration', (req,res)=>{
     });
 });
 
+app.get('/maintanance', (req,res)=>{
+    res.render('maintanance.hbs', {
+        pageTitle: 'About Page'
+
+    });
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
