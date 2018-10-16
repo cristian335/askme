@@ -1,0 +1,15 @@
+{
+  "name": "ask",
+  "version": "1.0.0",
+  "description": "a modern way to ask questions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zamfir Cristian",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "hbs": "^4.0.1"
+  }
+}
