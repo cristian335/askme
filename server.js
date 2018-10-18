@@ -96,7 +96,8 @@ app.get('/maintanance', (req,res)=>{
 
 app.get('/chat', (req,res)=>{
     res.render('chat.hbs', {
-        pageTitle: 'About Page'
+        Name: 'About Page',
+        Message: "Hello how are you today?"
 
     });
 });
@@ -104,9 +105,9 @@ app.get('/chat', (req,res)=>{
 io.on('connection', function (socket) {
     console.log('New user connected');
 
-    socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
+    //socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
 
-    socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined'));
+    //socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined'));
 
     socket.on('createMessage', (message, callback) => {
         console.log('createMessage', message);

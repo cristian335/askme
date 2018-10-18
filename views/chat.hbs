@@ -10,17 +10,21 @@
 
 <body>
 {{>navigation}}
-
+   
     <main class="page contact-us-page">
         <section class="clean-block clean-form dark">
+            <div class="card">
+        <div class="card-header">
+            <h6 class="mb-0">Community Chat</h6>
+        </div>
+        <div class="card-body" style="height:233px;">
+            <ul class="list-group" id="messages"></ul>
+
+    </div>
+
             <div class="container">
-                <div class="block-heading">
-                    <h2 class="text-info">Chat APP</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-                </div>
-                <ol id="messages"></ol>
                 <form>
-                    <div class="form-group"><label>Name</label><input class="form-control" type="text" id="name-form"></div>
+                    <div class="form-group"><label>Name</label><input class="form-control" type="text" id="name-form" value="User"></div>
                     <div class="form-group"><label>Message</label><textarea class="form-control" id="message-form"></textarea></div>
                     <div class="form-group"><button class="btn btn-primary btn-block" id="send-message" type="button">Send</button></div>
                 </form>
@@ -29,7 +33,7 @@
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
     <script src="/assets/js/chat_engine.js"></script>
-{{>footer}}
+
 {{>scripts}}
 
 </body>
